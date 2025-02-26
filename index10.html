@@ -13,36 +13,18 @@
     </style>
 </head>
 <body>
-    <nav class="navbar navbar-expand-md bg-purple  navbar-dark fixed top">
-
+    <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
-            <a class="navbar-brand" href="index.html"><img src=https://trains.fyi/_next/static/media/tfyi_logo_transparent.832a81d6.png style="width: 80px;"></a>
-
-
-            <div class= "collapse navbar-collapse">
+            <a href="index.html"><img style="height: 60px; width: 60px" src="https://m.media-amazon.com/images/I/51BpL9Dv-uL._AC_UF894,1000_QL80_.jpg" class="rounded-circle" id="logo"></a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="page1.html">Page 1</a>
-                    </li>
                 </ul>
-
-                <div class= "collapse navbar-collapse">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="page2.html">Page 2</a>
-                    </li>
-                </ul> 
-
-        <div class= "collapse navbar-collapse">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item">
-                        <a class="nav-link" href="page3.html">Page 3</a>
-                    </li>
-                </ul> 
-
                 <form class="d-flex">
-                    <input class="form-control" type="text" placeholder="search...">
-                    <button class="btn btn-success" type="button">search</button>
+                    <input class="form-control me-2" type="search" placeholder="search..." aria-label="Search">
+                    <button class="btn btn-success" type="submit">Search</button>
                 </form>
             </div>
         </div>
@@ -54,8 +36,9 @@
             <img src="https://www.moneymax.ph/hs-fs/hubfs/station-map-ezgif.com-webp-to-png-converter.png?width=601&height=507&name=station-map-ezgif.com-webp-to-png-converter.png" style="width: 500px;" alt ="Train Map">
         </div>
         <div class="fare-section">
+            <form>
             <label for="departure">LEAVING FROM:</label>
-            <select class="form-control" id="LEAVING FROM">
+            <select class="form-control" id="LEAVINGFROM">
                 <option value="0">North Ave.</option>
                 <option value="0">Quezon Ave.</option>
                 <option value="0">Kamuning</option>
@@ -72,7 +55,7 @@
             </select>
             
             <label for="destination">GOING TO:</label>
-            <select class="form-control" id="GOING TO">
+            <select class="form-control" id="GOINGTO">
                  <option value="0">North Ave.</option>
                 <option value="0">Quezon Ave.</option>
                 <option value="0">Kamuning</option>
@@ -89,9 +72,10 @@
             </select>
         </div>
             <div class="fare-options">
-                <button onclick="calculateFare('regular')">Regular Fare</button>
-                <button onclick="calculateFare('discounted')">Discounted Fare</button>
+                <button type="submit" onclick="calculatefare()">Regular Fare</button>
+                <button type="submit" onclick="calculate()">Discounted Fare</button>
             </div>
+            </form>
             
             <div class="ticket-price">
                 <h2>Ticket Price:</h2>
@@ -101,7 +85,15 @@
     </div>
     
     <script src="script.js">
-        var pricing = 13
+        function calculatefare(){
+        var from = document.getElementById("LEAVINGFROM").value;
+        var t_o = document.getElementById("GOINGTO").value;
+        var basefare = 13;
+        
+        var distance = from - t_o;
+        var totalprice = distance + basefare;
+        document.getElementById("price").innerHTML = totalprice;
+        }
     </script>  
 </body>
 </html>
