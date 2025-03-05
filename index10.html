@@ -10,12 +10,16 @@
         h1 {
             text-align: center;
         }
+
+        body {
+            background-color: #FFFAA0;
+        }
     </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
         <div class="container-fluid">
-            <a href="index.html"><img style="height: 60px; width: 60px" src="https://m.media-amazon.com/images/I/51BpL9Dv-uL._AC_UF894,1000_QL80_.jpg" class="rounded-circle" id="logo"></a>
+            <a href="index.html"><img style="height: 60px; width: 60px" src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/de355201-269a-4f25-8aa4-3bd21e2a5117/deq1fux-5b012ce4-9ac0-492c-ae06-6e861b929e7c.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOjdlMGQxODg5ODIyNjQzNzNhNWYwZDQxNWVhMGQyNmUwIiwiaXNzIjoidXJuOmFwcDo3ZTBkMTg4OTgyMjY0MzczYTVmMGQ0MTVlYTBkMjZlMCIsIm9iaiI6W1t7InBhdGgiOiJcL2ZcL2RlMzU1MjAxLTI2OWEtNGYyNS04YWE0LTNiZDIxZTJhNTExN1wvZGVxMWZ1eC01YjAxMmNlNC05YWMwLTQ5MmMtYWUwNi02ZTg2MWI5MjllN2MucG5nIn1dXSwiYXVkIjpbInVybjpzZXJ2aWNlOmZpbGUuZG93bmxvYWQiXX0.tgZzj6BJ-R7izqsAllThcFId2e3Kwj0hzhajsTXTuNU" class="rounded-circle" id="logo"></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -70,12 +74,13 @@
                        <option value="15">Magallanes</option>
                         <option value="15">Taft</option>
             </select>
-        </div>
+     
             <div class="fare-options">
-                <button type="submit" onclick="calculatefare()">Regular Fare</button>
-                <button type="submit" onclick="calculate()">Discounted Fare</button>
+                <button type="button" onclick="calculatefare()">Regular Fare</button>
+                <button type="button" onclick="calculate()">Discounted Fare</button>
             </div>
             </form>
+        </div>
             
             <div class="ticket-price">
                 <h2>Ticket Price:</h2>
@@ -84,15 +89,23 @@
         </div>
     </div>
     
-    <script src="script.js">
+    <script>
         function calculatefare(){
         var from = document.getElementById("LEAVINGFROM").value;
         var t_o = document.getElementById("GOINGTO").value;
         var basefare = 13;
         
-        var distance = from - t_o;
+        var distance = t_o - from;
         var totalprice = distance + basefare;
         document.getElementById("price").innerHTML = totalprice;
+        }
+        function calculate(){
+        var fromd = document.getElementById("LEAVINGFROM").value;
+        var to = document.getElementById("GOINGTO").value;
+        var basefared = 13;
+
+        var distanced = to - fromd;
+        var totalpriced = distanced - (basefared * 0.2); 
         }
     </script>  
 </body>
